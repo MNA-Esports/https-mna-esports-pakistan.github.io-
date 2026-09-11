@@ -1,0 +1,783 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>MNA ESPORTS | Solo Scrims</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #070a10;
+            color: #ffffff;
+            line-height: 1.6;
+        }
+
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: rgba(7, 10, 16, 0.96);
+            border-bottom: 1px solid #252d3b;
+            padding: 16px 6%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 900;
+            letter-spacing: 2px;
+        }
+
+        .logo span {
+            color: #00e5ff;
+        }
+
+        nav a {
+            color: #ffffff;
+            text-decoration: none;
+            margin-left: 22px;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            color: #00e5ff;
+        }
+
+        .hero {
+            min-height: 650px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 70px 20px;
+            background:
+                radial-gradient(circle at center, #17283d 0%, #070a10 60%);
+        }
+
+        .hero-content {
+            max-width: 900px;
+        }
+
+        .tag {
+            color: #00e5ff;
+            font-weight: bold;
+            letter-spacing: 5px;
+            margin-bottom: 18px;
+        }
+
+        .hero h1 {
+            font-size: clamp(55px, 10vw, 105px);
+            line-height: 0.95;
+            font-weight: 900;
+            margin-bottom: 25px;
+        }
+
+        .hero h1 span {
+            color: #00e5ff;
+        }
+
+        .hero p {
+            color: #aeb8c9;
+            font-size: 19px;
+            margin-bottom: 35px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 14px 30px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.2s;
+            margin: 5px;
+        }
+
+        .primary {
+            background: #00e5ff;
+            color: #061018;
+        }
+
+        .secondary {
+            border: 1px solid #00e5ff;
+            color: #00e5ff;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+        }
+
+        section {
+            padding: 80px 6%;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 38px;
+            margin-bottom: 45px;
+        }
+
+        .section-title span {
+            color: #00e5ff;
+        }
+
+        .intro {
+            max-width: 850px;
+            margin: auto;
+            text-align: center;
+            color: #b7c0cf;
+            font-size: 18px;
+        }
+
+        .cards {
+            max-width: 1100px;
+            margin: auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 18px;
+        }
+
+        .card {
+            background: #101620;
+            border: 1px solid #273140;
+            border-radius: 14px;
+            padding: 28px 15px;
+            text-align: center;
+        }
+
+        .card .icon {
+            font-size: 30px;
+            margin-bottom: 10px;
+        }
+
+        .card h3 {
+            font-size: 14px;
+            color: #9da8ba;
+            margin-bottom: 7px;
+        }
+
+        .card strong {
+            font-size: 25px;
+            color: #00e5ff;
+        }
+
+        .reward-box {
+            max-width: 900px;
+            margin: auto;
+            background: #101620;
+            border: 1px solid #273140;
+            border-radius: 16px;
+            padding: 30px;
+        }
+
+        .reward-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #293241;
+            padding: 16px 0;
+        }
+
+        .reward-row:last-child {
+            border-bottom: none;
+        }
+
+        .amount {
+            color: #00e5ff;
+            font-weight: bold;
+        }
+
+        .payment-section {
+            background: #0b1018;
+        }
+
+        .payment-box {
+            max-width: 700px;
+            margin: auto;
+            text-align: center;
+            background: #101620;
+            border: 1px solid #273140;
+            border-radius: 16px;
+            padding: 35px;
+        }
+
+        .payment-box p {
+            color: #b8c1d0;
+            margin: 10px 0;
+        }
+
+        .payment-number {
+            display: inline-block;
+            margin: 20px 0;
+            padding: 15px 25px;
+            border-radius: 8px;
+            background: #070a10;
+            border: 1px solid #00e5ff;
+            color: #00e5ff;
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        .payment-note {
+            color: #ffcc66 !important;
+            font-size: 14px;
+        }
+
+        .form-box {
+            max-width: 700px;
+            margin: auto;
+            background: #101620;
+            padding: 35px;
+            border-radius: 16px;
+            border: 1px solid #273140;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #c0c8d5;
+            font-weight: bold;
+        }
+
+        input {
+            width: 100%;
+            padding: 14px;
+            border-radius: 7px;
+            border: 1px solid #303a4b;
+            background: #070a10;
+            color: white;
+            outline: none;
+            font-size: 15px;
+        }
+
+        input:focus {
+            border-color: #00e5ff;
+        }
+
+        input[type="file"] {
+            padding: 11px;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 15px;
+            border: none;
+            border-radius: 8px;
+            background: #00e5ff;
+            color: #061018;
+            font-weight: bold;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .submit-btn:hover {
+            opacity: 0.9;
+        }
+
+        .approval {
+            text-align: center;
+            background: #0b1018;
+        }
+
+        .approval-box {
+            max-width: 700px;
+            margin: auto;
+            background: #101620;
+            border: 1px solid #273140;
+            border-radius: 16px;
+            padding: 35px;
+        }
+
+        .approval-box p {
+            color: #b7c0cf;
+            margin-bottom: 20px;
+        }
+
+        .rules {
+            max-width: 850px;
+            margin: auto;
+        }
+
+        .rules li {
+            margin: 14px 0;
+            color: #c3cad6;
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px;
+            background: #05070b;
+            color: #778195;
+            border-top: 1px solid #1e2530;
+        }
+
+        @media (max-width: 800px) {
+            .cards {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            nav a {
+                margin-left: 8px;
+                font-size: 12px;
+            }
+        }
+
+        @media (max-width: 500px) {
+            nav {
+                padding: 14px 4%;
+            }
+
+            nav .links {
+                display: none;
+            }
+
+            section {
+                padding: 60px 5%;
+            }
+
+            .cards {
+                grid-template-columns: 1fr;
+            }
+
+            .reward-box,
+            .form-box,
+            .payment-box,
+            .approval-box {
+                padding: 22px;
+            }
+
+            .reward-row {
+                font-size: 14px;
+            }
+
+            .payment-number {
+                font-size: 18px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVIGATION -->
+    <nav>
+        <div class="logo">
+            MNA <span>ESPORTS</span>
+        </div>
+
+        <div class="links">
+            <a href="#scrims">Scrims</a>
+            <a href="#rewards">Rewards</a>
+            <a href="#payment">Payment</a>
+            <a href="#register">Register</a>
+            <a href="#approval">Approval</a>
+            <a href="#rules">Rules</a>
+        </div>
+    </nav>
+
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="hero-content">
+
+            <div class="tag">
+                MNA ESPORTS PRESENTS
+            </div>
+
+            <h1>
+                SOLO<br>
+                <span>SCRIMS</span>
+            </h1>
+
+            <p>
+                Competitive PUBG Solo Scrims
+            </p>
+
+            <a href="#register" class="btn primary">
+                REGISTER NOW
+            </a>
+
+            <a href="#rewards" class="btn secondary">
+                VIEW REWARDS
+            </a>
+
+        </div>
+    </section>
+
+
+    <!-- INTRODUCTION -->
+    <section id="scrims">
+
+        <h2 class="section-title">
+            About <span>Solo Scrims</span>
+        </h2>
+
+        <div class="intro">
+
+            <p>
+                Welcome to MNA Esports Solo Scrims.
+                Compete against other players, secure your position
+                and earn rewards.
+            </p>
+
+            <br>
+
+            <h2 style="color:#00e5ff;">
+                FEE ONLY 145 PKR
+            </h2>
+
+        </div>
+
+    </section>
+
+
+    <!-- QUICK INFORMATION -->
+    <section>
+
+        <h2 class="section-title">
+            Scrim <span>Information</span>
+        </h2>
+
+        <div class="cards">
+
+            <div class="card">
+                <div class="icon">🎟️</div>
+                <h3>ENTRY FEE</h3>
+                <strong>PKR 145</strong>
+            </div>
+
+            <div class="card">
+                <div class="icon">🏆</div>
+                <h3>TOP 1</h3>
+                <strong>PKR 2500</strong>
+            </div>
+
+            <div class="card">
+                <div class="icon">🥇</div>
+                <h3>TOP 2 - 11</h3>
+                <strong>PKR 100</strong>
+            </div>
+
+            <div class="card">
+                <div class="icon">💀</div>
+                <h3>PER KILL</h3>
+                <strong>PKR 50</strong>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- REWARDS -->
+    <section id="rewards">
+
+        <h2 class="section-title">
+            Prize <span>Rewards</span>
+        </h2>
+
+        <div class="reward-box">
+
+            <div class="reward-row">
+                <span>🏆 Top 1 Team</span>
+                <span class="amount">PKR 2,500</span>
+            </div>
+
+            <div class="reward-row">
+                <span>🥈 Top 2 Team</span>
+                <span class="amount">PKR 100</span>
+            </div>
+
+            <div class="reward-row">
+                <span>🥉 Top 3 Team</span>
+                <span class="amount">PKR 100</span>
+            </div>
+
+            <div class="reward-row">
+                <span>Top 4 Team</span>
+                <span class="amount">PKR 100</span>
+            </div>
+
+            <div class="reward-row">
+                <span>Top 5 Team</span>
+                <span class="amount">PKR 100</span>
+            </div>
+
+            <div class="reward-row">
+                <span>Top 6 Team</span>
+                <span class="amount">PKR 100</span>
+            </div>
+
+            <div class="reward-row">
+                <span>Top 7 Team</span>
+                <span class="amount">PKR 100</span>
+            </div>
+
+            <div class="reward-row">
+                <span>Top 8 Team</span>
+                <span class="amount">PKR 100</span>
+            </div>
+
+            <div class="reward-row">
+                <span>Top 9 Team</span>
+                <span class="amount">PKR 100</span>
+            </div>
+
+            <div class="reward-row">
+                <span>Top 10 Team</span>
+                <span class="amount">PKR 100</span>
+            </div>
+
+            <div class="reward-row">
+                <span>Top 11 Team</span>
+                <span class="amount">PKR 100</span>
+            </div>
+
+            <div class="reward-row">
+                <span>💀 Per Kill</span>
+                <span class="amount">PKR 50</span>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- PAYMENT -->
+    <section id="payment" class="payment-section">
+
+        <h2 class="section-title">
+            Payment <span>Details</span>
+        </h2>
+
+        <div class="payment-box">
+
+            <h3>Registration Fee</h3>
+
+            <h2 style="color:#00e5ff; margin:10px 0;">
+                PKR 145
+            </h2>
+
+            <p>
+                Send your registration fee through
+                <strong>JazzCash or Easypaisa</strong>.
+            </p>
+
+            <div class="payment-number">
+                03247373938
+            </div>
+
+            <p>
+                After making the payment, keep your payment
+                screenshot and complete the registration form below.
+            </p>
+
+            <p class="payment-note">
+                ⚠️ Make sure your payment details and screenshot are correct.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- REGISTRATION -->
+    <section id="register">
+
+        <h2 class="section-title">
+            Player <span>Registration</span>
+        </h2>
+
+        <div class="form-box">
+
+            <form onsubmit="submitRegistration(event)">
+
+                <div class="form-group">
+                    <label for="pubgName">
+                        1. PUBG Name
+                    </label>
+
+                    <input
+                        type="text"
+                        id="pubgName"
+                        placeholder="Enter your PUBG name"
+                        required
+                    >
+                </div>
+
+
+                <div class="form-group">
+                    <label for="pubgUid">
+                        2. PUBG UID
+                    </label>
+
+                    <input
+                        type="text"
+                        id="pubgUid"
+                        placeholder="Enter your PUBG UID"
+                        required
+                    >
+                </div>
+
+
+                <div class="form-group">
+                    <label for="paymentDetail">
+                        3. Payment Detail (i.e. JazzCash or Easypaisa number)
+                    </label>
+
+                    <input
+                        type="text"
+                        id="paymentDetail"
+                        placeholder="Enter JazzCash or Easypaisa number"
+                        required
+                    >
+                </div>
+
+
+                <div class="form-group">
+                    <label for="paymentScreenshot">
+                        4. Payment Screenshot
+                    </label>
+
+                    <input
+                        type="file"
+                        id="paymentScreenshot"
+                        accept="image/*"
+                        required
+                    >
+                </div>
+
+
+                <button type="submit" class="submit-btn">
+                    SUBMIT REGISTRATION
+                </button>
+
+            </form>
+
+        </div>
+
+    </section>
+
+
+    <!-- APPROVAL -->
+    <section id="approval" class="approval">
+
+        <h2 class="section-title">
+            Registration <span>Approval</span>
+        </h2>
+
+        <div class="approval-box">
+
+            <p>
+                After you register with correct details, you have to
+                click on this link to check your registration approval.
+            </p>
+
+            <a href="#approval" class="btn primary">
+                CHECK REGISTRATION APPROVAL
+            </a>
+
+            <p style="margin-top:20px; font-size:14px;">
+                Your registration will be reviewed by MNA Esports.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- RULES -->
+    <section id="rules">
+
+        <h2 class="section-title">
+            Scrim <span>Rules</span>
+        </h2>
+
+        <div class="rules">
+
+            <ul>
+                <li>
+                    Players must provide their correct PUBG Name and PUBG UID.
+                </li>
+
+                <li>
+                    Players must submit correct payment details.
+                </li>
+
+                <li>
+                    A clear payment screenshot must be uploaded.
+                </li>
+
+                <li>
+                    Registration will be checked and verified by MNA Esports.
+                </li>
+
+                <li>
+                    Any fake or incorrect payment information can result
+                    in registration rejection.
+                </li>
+
+                <li>
+                    Any cheating or unfair play can result in disqualification.
+                </li>
+
+                <li>
+                    Players must follow all instructions given by MNA Esports.
+                </li>
+            </ul>
+
+        </div>
+
+    </section>
+
+
+    <!-- FOOTER -->
+    <footer>
+
+        <p>
+            © 2026 MNA Esports. All Rights Reserved.
+        </p>
+
+        <p>
+            Solo Scrims • Competitive Gaming • Fair Play
+        </p>
+
+    </footer>
+
+
+    <!-- TEMPORARY REGISTRATION FUNCTION -->
+    <script>
+
+        function submitRegistration(event) {
+
+            event.preventDefault();
+
+            alert(
+                "Registration form received!\n\n" +
+                "Database connection will be added next."
+            );
+
+        }
+
+    </script>
+
+</body>
+</html>
