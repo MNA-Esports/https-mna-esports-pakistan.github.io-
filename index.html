@@ -814,12 +814,12 @@
         const { error: databaseError } = await supabaseClient
             .from("registrations")
             .insert({
-                player_name: playerName,
-                player_id: pubgUid,
-                payment_reference: paymentDetail,
-                payment_screenshot: filePath,
-                status: "Pending"
-            });
+    player_name: playerName,
+    player_id: pubgUid,
+    payment_reference: paymentDetail,
+    payment_screenshot: filePath,
+    status: "Pending"
+});
 
         if (databaseError) {
             console.error(databaseError);
