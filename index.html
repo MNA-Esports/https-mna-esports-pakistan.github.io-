@@ -338,6 +338,57 @@
             margin-bottom: 20px;
         }
 
+        /* CHAT HIGHLIGHT */
+        .chat-highlight {
+            margin: 25px auto 20px;
+            max-width: 620px;
+            padding: 20px;
+            border: 2px solid #00e5ff;
+            border-radius: 14px;
+            background: rgba(0, 229, 255, 0.08);
+            box-shadow: 0 0 22px rgba(0, 229, 255, 0.22);
+            animation: chatGlow 2s infinite;
+        }
+
+        .chat-highlight-title {
+            color: #00e5ff;
+            font-size: 20px;
+            font-weight: 900;
+            margin-bottom: 8px;
+        }
+
+        .chat-highlight-text {
+            color: #ffffff !important;
+            font-size: 15px;
+            margin-bottom: 15px !important;
+        }
+
+        .chat-highlight-btn {
+            display: inline-block;
+            padding: 13px 24px;
+            border-radius: 8px;
+            background: #00e5ff;
+            color: #061018;
+            text-decoration: none;
+            font-weight: bold;
+            box-shadow: 0 0 18px rgba(0, 229, 255, 0.30);
+            transition: 0.2s;
+        }
+
+        .chat-highlight-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 0 28px rgba(0, 229, 255, 0.50);
+        }
+
+        @keyframes chatGlow {
+            0%, 100% {
+                box-shadow: 0 0 15px rgba(0, 229, 255, 0.15);
+            }
+            50% {
+                box-shadow: 0 0 28px rgba(0, 229, 255, 0.40);
+            }
+        }
+
         .rules {
             max-width: 850px;
             margin: auto;
@@ -736,12 +787,24 @@
                 click on this link to check your registration approval.
             </p>
 
-            <!-- TAWK DIRECT CHAT LINK -->
-            <a href="https://tawk.to/chat/6aa5cc90a7a7803440408afc/1k2bqe57a?layout=modern"
-               target="_blank"
-               class="btn primary">
-                CHECK REGISTRATION APPROVAL
-            </a>
+            <!-- CHAT HIGHLIGHT -->
+            <div class="chat-highlight">
+
+                <div class="chat-highlight-title">
+                    💬 CHAT WITH US
+                </div>
+
+                <p class="chat-highlight-text">
+                    Agar Aap Madad Haasil Karna Chahte Hein Yaa Apni Registration Ki Manzuri Ki Tasadiq Karna Chahte Hein, Toh Is Chat Icon Par Click karein.
+                </p>
+
+                <a href="https://tawk.to/chat/6aa5cc90a7a7803440408afc/1k2bqe57a?layout=modern"
+                   target="_blank"
+                   class="chat-highlight-btn">
+                    💬 OPEN CHAT
+                </a>
+
+            </div>
 
             <p style="margin-top:20px; font-size:14px;">
                 Your registration will be reviewed by MNA Esports Pakistan.
