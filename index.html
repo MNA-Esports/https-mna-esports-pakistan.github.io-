@@ -801,7 +801,7 @@
         // Upload screenshot
         const { error: uploadError } = await supabaseClient
             .storage
-            .from("payment-screenshots")
+            .from("Payment_Screenshot")
             .upload(filePath, screenshotFile);
 
         if (uploadError) {
@@ -817,7 +817,7 @@
                 player_name: playerName,
                 player_id: pubgUid,
                 payment_reference: paymentDetail,
-                payment_screenshot: filePath,
+                payment-screenshots: filePath,
                 status: "Pending"
             });
 
@@ -827,7 +827,7 @@
             // Remove uploaded screenshot if database saving fails
             await supabaseClient
                 .storage
-                .from("payment-screenshots")
+                .from("Payment_Screenshot")
                 .remove([filePath]);
 
             alert("Registration could not be saved. Please try again.");
