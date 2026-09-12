@@ -766,7 +766,83 @@
     <!-- TEMPORARY REGISTRATION FUNCTION -->
     <script>
 
-        function submitRegistration(event) {
+        async function submitRegistration(event) {
+    event.preventDefault();
+
+    const form = event.target;
+
+    const playerName = document.getElementById("playerName").value.trim();
+    const pubgUid = document.getElementById("pubgUid").value.trim();
+    const paymentDetail = document.getElementById("paymentDetail").value.trim();
+    const screenshotFile = document.getElementById("paymentScreenshot").files[0];
+
+    if (!playerName || !pubgUid || !paymentDetail || !screenshotFile) {
+        alert("Please fill in all fields and upload your payment screenshot.");
+        return;
+    }
+
+    // Check file type
+    if (!screenshotFile.type.startsWith("image/")) {
+        alert("Please upload an image file for the payment screenshot.");
+        return;
+    }
+
+    // Maximum file size: 5 MB
+    if (screenshotFile.size > 5 * 1024 * 1024) {
+        alert("Payment screenshot must be smaller than 5 MB.");
+        return;
+    }
+
+    try {
+        // Create a unique file name
+        const fileExtension = screenshotFile.name.split(".").pop();
+        const filePath = `${Date.now()}_${crypto.randomUUID()}.${fileExtension}`;
+
+        // Upload screenshot
+        const { error: uploadError } = await supabaseClient
+            .storage
+            .from("payment-screenshots")
+            .upload(filePath, screenshotFile);
+
+        if (uploadError) {
+            console.error(uploadError);
+            alert("Payment screenshot upload failed. Please try again.");
+            return;
+        }
+
+        // Save registration details
+        const { error: databaseError } = await supabaseClient
+            .from("registrations")
+            .insert({
+                player_name: playerName,
+                player_id: pubgUid,
+                payment_reference: paymentDetail,
+                payment_screenshot: filePath,
+                status: "Pending"
+            });
+
+        if (databaseError) {
+            console.error(databaseError);
+
+            // Remove uploaded screenshot if database saving fails
+            await supabaseClient
+                .storage
+                .from("payment-screenshots")
+                .remove([filePath]);
+
+            alert("Registration could not be saved. Please try again.");
+            return;
+        }
+
+        alert("Registration submitted successfully!\n\nYour registration is now Pending approval.");
+
+        form.reset();
+
+    } catch (error) {
+        console.error(error);
+        alert("Something went wrong. Please try again.");
+    }
+}
 
             event.preventDefault();
 
@@ -783,7 +859,7 @@
 <script>
 const SUPABASE_URL = "https://awdzejrpxxvmbnybkwnp.supabase.co";
 
-const SUPABASE_KEY = "YOUR_PUBLISHABLE_KEY_HERE";
+const SUPABASE_KEY = "sb_publishable_OhGEakXHJYz7weGFS7ljTg_iPAHYasR";
 
 const supabaseClient = window.supabase.createClient(
     SUPABASE_URL,
