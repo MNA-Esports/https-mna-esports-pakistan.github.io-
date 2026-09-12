@@ -736,7 +736,10 @@
                 click on this link to check your registration approval.
             </p>
 
-            <a href="#approval" class="btn primary">
+            <!-- TAWK DIRECT CHAT LINK -->
+            <a href="https://tawk.to/chat/6aa5cc90a7a7803440408afc/1k2bqe57a?layout=modern"
+               target="_blank"
+               class="btn primary">
                 CHECK REGISTRATION APPROVAL
             </a>
 
@@ -826,24 +829,21 @@
                 return;
             }
 
-            // Check file type
             if (!screenshotFile.type.startsWith("image/")) {
                 alert("Please upload an image file for the payment screenshot.");
                 return;
             }
 
-            // Maximum file size: 5 MB
             if (screenshotFile.size > 5 * 1024 * 1024) {
                 alert("Payment screenshot must be smaller than 5 MB.");
                 return;
             }
 
             try {
-                // Create a unique file name
+
                 const fileExtension = screenshotFile.name.split(".").pop();
                 const filePath = `${Date.now()}_${crypto.randomUUID()}.${fileExtension}`;
 
-                // Upload screenshot
                 const { error: uploadError } = await supabaseClient
                     .storage
                     .from("Payment_Screenshot")
@@ -855,7 +855,6 @@
                     return;
                 }
 
-                // Save registration details
                 const { error: databaseError } = await supabaseClient
                     .from("registrations")
                     .insert({
@@ -869,7 +868,6 @@
                 if (databaseError) {
                     console.error(databaseError);
 
-                    // Remove uploaded screenshot if database saving fails
                     await supabaseClient
                         .storage
                         .from("Payment_Screenshot")
@@ -907,18 +905,24 @@
         );
 
     </script>
-<!--Start of Tawk.to Script-->
-<script type="text/javascript">
-var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-(function(){
-var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-s1.async=true;
-s1.src='https://embed.tawk.to/6aa5cc90a7a7803440408afc/1k2bqe57a';
-s1.charset='UTF-8';
-s1.setAttribute('crossorigin','*');
-s0.parentNode.insertBefore(s1,s0);
-})();
-</script>
-<!--End of Tawk.to Script-->
+
+
+    <!-- TAWK.TO CHAT WIDGET -->
+    <script type="text/javascript">
+        var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+
+        (function(){
+            var s1=document.createElement("script"),
+                s0=document.getElementsByTagName("script")[0];
+
+            s1.async=true;
+            s1.src='https://embed.tawk.to/6aa5cc90a7a7803440408afc/1k2bqe57a';
+            s1.charset='UTF-8';
+            s1.setAttribute('crossorigin','*');
+
+            s0.parentNode.insertBefore(s1,s0);
+        })();
+    </script>
+
 </body>
 </html>
