@@ -4,7 +4,34 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>MNA ESPORTS | Solo Scrims</title>
+    <title>MNA ESPORTS | PUBG Mobile Solo Scrims in Pakistan</title>
+
+    <meta name="description" content="MNA Esports is a PUBG Mobile esports platform in Pakistan featuring solo scrims, tournaments, competitive gaming, rewards and esports events.">
+
+    <meta name="keywords" content="MNA Esports, MNA ESPORTS, PUBG Mobile Pakistan, PUBG tournaments Pakistan, PUBG scrims Pakistan, solo scrims, esports Pakistan">
+
+    <meta name="author" content="MNA Esports">
+
+    <meta name="robots" content="index, follow">
+
+    <link rel="canonical" href="https://mna-esports.github.io/https-mna-esports.github.io-/">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="MNA ESPORTS | PUBG Mobile Solo Scrims">
+    <meta property="og:description" content="MNA Esports PUBG Mobile solo scrims, tournaments, rewards and competitive gaming events in Pakistan.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://mna-esports.github.io/https-mna-esports.github.io-/">
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "MNA Esports",
+        "url": "https://mna-esports.github.io/https-mna-esports.github.io-/",
+        "description": "MNA Esports is a PUBG Mobile esports platform featuring solo scrims, tournaments, competitive gaming and esports events in Pakistan."
+    }
+    </script>
 
     <style>
         * {
@@ -403,12 +430,12 @@
             </div>
 
             <h1>
-                SOLO<br>
-                <span>SCRIMS</span>
+                MNA <span>ESPORTS</span><br>
+                SOLO SCRIMS
             </h1>
 
             <p>
-                Competitive PUBG Solo Scrims
+                PUBG Mobile Solo Scrims and Competitive Esports in Pakistan
             </p>
 
             <a href="#register" class="btn primary">
@@ -427,15 +454,22 @@
     <section id="scrims">
 
         <h2 class="section-title">
-            About <span>Solo Scrims</span>
+            About <span>MNA Esports</span>
         </h2>
 
         <div class="intro">
 
             <p>
-                Welcome to MNA Esports Solo Scrims.
-                Compete against other players, secure your position
-                and earn rewards.
+                MNA Esports is a PUBG Mobile esports platform in Pakistan
+                focused on competitive gaming, solo scrims, tournaments,
+                player rewards and fair-play esports events.
+            </p>
+
+            <br>
+
+            <p>
+                Join MNA Esports Solo Scrims, compete against other players,
+                secure your position and earn rewards.
             </p>
 
             <br>
@@ -453,7 +487,7 @@
     <section>
 
         <h2 class="section-title">
-            Scrim <span>Information</span>
+            MNA Esports <span>Scrim Information</span>
         </h2>
 
         <div class="cards">
@@ -491,7 +525,7 @@
     <section id="rewards">
 
         <h2 class="section-title">
-            Prize <span>Rewards</span>
+            MNA Esports <span>Prize Rewards</span>
         </h2>
 
         <div class="reward-box">
@@ -565,7 +599,7 @@
     <section id="payment" class="payment-section">
 
         <h2 class="section-title">
-            Payment <span>Details</span>
+            MNA Esports <span>Payment Details</span>
         </h2>
 
         <div class="payment-box">
@@ -603,7 +637,7 @@
     <section id="register">
 
         <h2 class="section-title">
-            Player <span>Registration</span>
+            MNA Esports <span>Player Registration</span>
         </h2>
 
         <div class="form-box">
@@ -708,7 +742,7 @@
     <section id="rules">
 
         <h2 class="section-title">
-            Scrim <span>Rules</span>
+            MNA Esports <span>Scrim Rules</span>
         </h2>
 
         <div class="rules">
@@ -757,106 +791,111 @@
         </p>
 
         <p>
-            Solo Scrims • Competitive Gaming • Fair Play
+            MNA Esports • PUBG Mobile Solo Scrims • Competitive Gaming • Fair Play
         </p>
 
     </footer>
 
 
-    <!-- TEMPORARY REGISTRATION FUNCTION -->
+    <!-- REGISTRATION FUNCTION -->
     <script>
 
         async function submitRegistration(event) {
-    event.preventDefault();
+            event.preventDefault();
 
-    const form = event.target;
+            const form = event.target;
 
-    const playerName = document.getElementById("pubgName").value.trim();
-    const pubgUid = document.getElementById("pubgUid").value.trim();
-    const paymentDetail = document.getElementById("paymentDetail").value.trim();
-    const screenshotFile = document.getElementById("paymentScreenshot").files[0];
+            const playerName = document.getElementById("pubgName").value.trim();
+            const pubgUid = document.getElementById("pubgUid").value.trim();
+            const paymentDetail = document.getElementById("paymentDetail").value.trim();
+            const screenshotFile = document.getElementById("paymentScreenshot").files[0];
 
-    if (!playerName || !pubgUid || !paymentDetail || !screenshotFile) {
-        alert("Please fill in all fields and upload your payment screenshot.");
-        return;
-    }
+            if (!playerName || !pubgUid || !paymentDetail || !screenshotFile) {
+                alert("Please fill in all fields and upload your payment screenshot.");
+                return;
+            }
 
-    // Check file type
-    if (!screenshotFile.type.startsWith("image/")) {
-        alert("Please upload an image file for the payment screenshot.");
-        return;
-    }
+            // Check file type
+            if (!screenshotFile.type.startsWith("image/")) {
+                alert("Please upload an image file for the payment screenshot.");
+                return;
+            }
 
-    // Maximum file size: 5 MB
-    if (screenshotFile.size > 5 * 1024 * 1024) {
-        alert("Payment screenshot must be smaller than 5 MB.");
-        return;
-    }
+            // Maximum file size: 5 MB
+            if (screenshotFile.size > 5 * 1024 * 1024) {
+                alert("Payment screenshot must be smaller than 5 MB.");
+                return;
+            }
 
-    try {
-        // Create a unique file name
-        const fileExtension = screenshotFile.name.split(".").pop();
-        const filePath = `${Date.now()}_${crypto.randomUUID()}.${fileExtension}`;
+            try {
+                // Create a unique file name
+                const fileExtension = screenshotFile.name.split(".").pop();
+                const filePath = `${Date.now()}_${crypto.randomUUID()}.${fileExtension}`;
 
-        // Upload screenshot
-        const { error: uploadError } = await supabaseClient
-            .storage
-            .from("Payment_Screenshot")
-            .upload(filePath, screenshotFile);
+                // Upload screenshot
+                const { error: uploadError } = await supabaseClient
+                    .storage
+                    .from("Payment_Screenshot")
+                    .upload(filePath, screenshotFile);
 
-        if (uploadError) {
-            console.error(uploadError);
-            alert("Payment screenshot upload failed. Please try again.");
-            return;
-        }
+                if (uploadError) {
+                    console.error(uploadError);
+                    alert("Payment screenshot upload failed. Please try again.");
+                    return;
+                }
 
-        // Save registration details
-        const { error: databaseError } = await supabaseClient
-            .from("registrations")
-            .insert({
-    player_name: playerName,
-    player_id: pubgUid,
-    payment_reference: paymentDetail,
-    payment_screenshot: filePath,
-    status: "Pending"
-});
+                // Save registration details
+                const { error: databaseError } = await supabaseClient
+                    .from("registrations")
+                    .insert({
+                        player_name: playerName,
+                        player_id: pubgUid,
+                        payment_reference: paymentDetail,
+                        payment_screenshot: filePath,
+                        status: "Pending"
+                    });
 
-        if (databaseError) {
-            console.error(databaseError);
+                if (databaseError) {
+                    console.error(databaseError);
 
-            // Remove uploaded screenshot if database saving fails
-            await supabaseClient
-                .storage
-                .from("Payment_Screenshot")
-                .remove([filePath]);
+                    // Remove uploaded screenshot if database saving fails
+                    await supabaseClient
+                        .storage
+                        .from("Payment_Screenshot")
+                        .remove([filePath]);
 
-            alert("Registration could not be saved. Please try again.");
-            return;
-        }
+                    alert("Registration could not be saved. Please try again.");
+                    return;
+                }
 
-        alert("Registration submitted successfully!\n\nYour registration is now Pending approval.");
+                alert("Registration submitted successfully!\n\nYour registration is now Pending approval.");
 
-        form.reset();
+                form.reset();
 
-    } catch (error) {
-        console.error(error);
-        alert("Something went wrong. Please try again.");
-    }
-
+            } catch (error) {
+                console.error(error);
+                alert("Something went wrong. Please try again.");
+            }
         }
 
     </script>
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
-<script>
-const SUPABASE_URL = "https://awdzejrpxxvmbnybkwnp.supabase.co";
 
-const SUPABASE_KEY = "sb_publishable_OhGEakXHJYz7weGFS7ljTg_iPAHYasR";
+    <!-- SUPABASE -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
-const supabaseClient = window.supabase.createClient(
-    SUPABASE_URL,
-    SUPABASE_KEY
-);
-</script>
+    <script>
+
+        const SUPABASE_URL = "https://awdzejrpxxvmbnybkwnp.supabase.co";
+
+        const SUPABASE_KEY = "sb_publishable_OhGEakXHJYz7weGFS7ljTg_iPAHYasR";
+
+        const supabaseClient = window.supabase.createClient(
+            SUPABASE_URL,
+            SUPABASE_KEY
+        );
+
+    </script>
+
 </body>
 </html>
